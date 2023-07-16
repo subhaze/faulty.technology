@@ -33,7 +33,7 @@ inputs:
 outputs:
   deployment-url:
     description: The URL to access the newly deployed site
-    type: string
+    value: ${{ steps.vercel_deploy.outputs.deployment-url }}
 
 runs:
   using: "composite"
@@ -63,6 +63,7 @@ runs:
         npx -y vercel "${args[@]}"
     
     - name: "Vercel: deploy"
+      id: vercel_deploy
       working-directory: ${{ inputs.working-directory }}
       shell: bash
       run: |
