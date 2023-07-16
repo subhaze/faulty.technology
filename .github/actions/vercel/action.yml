@@ -44,10 +44,12 @@ runs:
     
     - name: "Vercel: Link project"
       working-directory: ${{ inputs.working-directory }}
+      shell: bash
       run: npx -y vercel link -p ${{ inputs.vercel-project }} --scope ${{ inputs.vercel-scope }} --token ${{ inputs.vercel-token }} --yes
     
     - name: "Vercel: Pull environment"
       working-directory: ${{ inputs.working-directory }}
+      shell: bash
       run: npx -y vercel pull --environment ${{ inputs.vercel-environment }} --token ${{ inputs.vercel-token }} --yes
     
     - name: "Vercel: build"
