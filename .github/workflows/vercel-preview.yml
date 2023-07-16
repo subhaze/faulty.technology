@@ -13,7 +13,7 @@ jobs:
       - uses: ./.github/actions/vercel
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-scope: ${{ env.VERCEL_SCOPE }}
-          vercel-project: ${{ env.VERCEL_PROJECT }}
+          vercel-scope: ${{ vars.VERCEL_SCOPE }}
+          vercel-project: ${{ vars.VERCEL_PROJECT }}
           vercel-environment: preview
           node-version: 18
