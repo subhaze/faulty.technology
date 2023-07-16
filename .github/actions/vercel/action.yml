@@ -15,14 +15,13 @@ inputs:
     description: The slug of the project you want to deploy to
     type: string
   vercel-environment:
-    required: true
     description: The project environment to pull; must be one of <production | preview | development>
     type: string
     default: preview
   vercel-production-deploy:
-    required: false
     description: If true, the vercel production env will be pulled and the `--prod` flag used for the deployment.
     type: boolean
+    default: false
   working-directory:
     description: The directory from where the deployment shoudl happen
     default: "."
@@ -34,6 +33,7 @@ inputs:
 outputs:
   deployment-url:
     description: The URL to access the newly deployed site
+    type: string
 
 runs:
   using: "composite"
