@@ -1,0 +1,19 @@
+on:
+  workflow_dispatch: {}
+
+jobs:
+  vercel_deploy_preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - uses: ./.github/actions/vercel
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-scope: ${{ env.VERCEL_SCOPE }}
+          vercel-project: ${{ env.VERCEL_PROJECT }}
+          vercel-environment: preview
+          node-version: 18
